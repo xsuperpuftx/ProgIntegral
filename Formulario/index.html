@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Agregar Entrada</h1>
+    <form action="procesar.php" method="post">
+        <input type="hidden" name="tabla" value="Cabinas">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required><br><br>
+        <label for="direccion">Direccion::</label>
+        <input type="text" id="direccion" name="direccion" required><br><br>
+        <input type="submit" value="Agregar Entrada">
+    </form>
+</body>
+</html>

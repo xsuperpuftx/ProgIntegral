@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UACJ</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="contenedor">
+        <h1>UACJ</h1>
+        <form class="formulario" action="guardar.php" method="POST">
+            <label for="codigo">Codigo</label>
+            <input type="text" id="codigo" name="codigo" maxlength="40" required> <br><br>
+
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" maxlength="40" required> <br><br>
+
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos" maxlength="40" required> <br><br>
+
+            <label for="edad">Edad</label>
+            <input type="text" id="edad" name="edaed" maxlength="40" required> <br><br>
+
+            <label for="telefono">Telefono</label>
+            <input type="text" id="telefono" name="telefono" maxlength="4" required> <br><br>
+
+            <button class="submit" type="submit">Enviar datos</button>
+        </form>
+    </div>
+</body>
+</html>
