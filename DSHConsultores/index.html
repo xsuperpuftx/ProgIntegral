@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSH Consultores </title>
+    <link rel="stylesheet" href="estilo.css">
+    <meta name="description" content="DSH Consultores ofrece asesoría legal especializada en derecho corporativo, cumplimiento normativo y protección de activos.">
+    
+    <!-- Swiper JS para el carrusel -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>Soluciones Legales que <span class="text-highlight">Impulsan su Negocio</span></h1>
+            <p class="lead">En DSH Consultores combinamos expertise jurídico con un enfoque estratégico para proteger y hacer crecer su empresa</p>
+            <div class="cta-buttons">
+                <a href="/contacto" class="btn btn-primary">Consulta Gratuita</a>
+                <a href="/servicios" class="btn btn-secondary">Nuestros Servicios</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Carrusel de Testimonios -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Confían en Nuestra <span class="text-highlight">Experiencia</span></h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper" id="testimonios-container">
+                    <!-- Los testimonios se cargarán dinámicamente desde la API -->
+                    <div class="swiper-slide">
+                        <blockquote>
+                            "DSH Consultores resolvió nuestro conflicto societario en tiempo récord, salvando nuestra empresa."
+                        </blockquote>
+                        <cite>- Grupo Industrial Monterrey</cite>
+                    </div>
+                </div>
+                <!-- carrusel -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Destacados -->
+    <section class="featured-services">
+        <div class="container">
+            <h2>Nuestras <span class="text-highlight">Áreas de Expertise</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>Derecho Corporativo</h3>
+                    <p>Constitución de empresas, fusiones, adquisiciones y gobierno corporativo</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Compliance Legal</h3>
+                    <p>Programas de integridad y cumplimiento normativo a medida</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Litigio Estratégico</h3>
+                    <p>Representación en procesos judiciales y arbitrajes complejos</p>
+                </div>
+            </div>
+            <a href="/servicios" class="btn btn-outline">Ver Todos los Servicios →</a>
+        </div>
+    </section>
+
+    <!-- Estadíisticas -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-item">
+                <span class="stat-number" id="anos-experiencia">15+</span>
+                <span class="stat-label">Años de Experiencia</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="casos-exitosos">240+</span>
+                <span class="stat-label">Casos Exitosos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="clientes-activos">85+</span>
+                <span class="stat-label">Clientes Activos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portafolio -->
+    <section class="portfolio-preview">
+        <div class="container">
+            <h2>Casos de <span class="text-highlight">Éxito Recientes</span></h2>
+            <div class="portfolio-grid" id="portafolio-container">
+                <!-- Los casos se cargan desde la API -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Reestructuración Corporativa Multinacional</h3>
+                        <p>Éxito en fusión de empresas con operaciones en 3 países</p>
+                    </div>
+                </div>
+            </div>
+            <a href="/portafolio" class="btn btn-primary">Ver Portafolio Completo</a>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Listo para <span class="text-highlight">Proteger su Empresa</span>?</h2>
+            <p>Nuestro equipo multidisciplinario está preparado para asesorarle</p>
+            <div class="cta-buttons">
+                <a href="/contacto" class="btn btn-primary">Contactar Abogado</a>
+                <a href="tel:+526561234567" class="btn btn-secondary">Llamar Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enlace al CRUD de admin (oculto para usuarios normales) -->
+    <a href="/admin/login" class="admin-link">Área Admin</a>
+</body>
+</html>
