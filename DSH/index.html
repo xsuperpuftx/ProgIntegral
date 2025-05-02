@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSH Consultores - Asesoría Legal Especializada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#"><img src="img/logo.png" alt="DSH Consultores"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Expertos en Asesoría Legal y Cumplimiento Normativo</h1>
+            <p>Protegiendo sus intereses con soluciones legales efectivas y personalizadas</p>
+            <a href="#contacto" class="btn">Contáctenos</a>
+        </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros" class="about">
+        <div class="container">
+            <h2>Sobre DSH Consultores</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Fundada en 2010 en Ciudad Juárez, DSH Consultores comenzó como un pequeño bufete especializado en derecho corporativo. Lo que nos distinguió desde el principio fue nuestro enfoque práctico y orientado a resultados.</p>
+                    <p>A lo largo de los años, hemos ampliado nuestras áreas de práctica para responder a las necesidades cambiantes del mercado, siempre manteniendo nuestro compromiso con la calidad y la atención personalizada.</p>
+                    <p>Hoy atendemos a más de 500 clientes satisfechos, desde emprendedores hasta corporaciones multinacionales, orgullosos de haber contribuido al éxito de sus proyectos y a la solución de sus desafíos legales.</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Asesoría Legal</h3>
+                    <p>Orientación profesional en diversas áreas del derecho para proteger sus intereses.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Cumplimiento Normativo</h3>
+                    <p>Garantizamos que su empresa cumpla con todas las regulaciones aplicables.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Litigios</h3>
+                    <p>Representación legal efectiva en procesos judiciales de diversa índole.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <h2>Testimonios de Clientes</h2>
+            <div class="testimonials-carousel">
+                <div class="testimonial" id="testimonial-1">
+                    <p class="testimonial-text">"Excelente servicio profesional. Resolvieron mi caso de manera rápida y
+                        eficiente."</p>
+                    <p class="testimonial-author">- Juan Pérez</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2>Contáctenos</h2>
+            <div class="contact-content">
+                <form id="contact-form" class="contact-form" action="submit.php" method="POST">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Teléfono" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Seleccione un servicio</option>
+                            <option value="Asesoría Legal">Asesoría Legal</option>
+                            <option value="Cumplimiento Normativo">Cumplimiento Normativo</option>
+                            <option value="Litigios">Litigios</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Describa su caso" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Ciudad Juárez, Chihuahua</p>
+                    <p><i class="fas fa-phone"></i> 656-252-2090</p>
+                    <p><i class="fas fa-envelope"></i> miguelgeronimodiaz@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo-white.png" alt="DSH Consultores">
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Síganos en Instagram</h4>
+                    <div class="qr-code">
+                        <img src="img/qr-instagram.png" alt="QR Instagram">
+                        <p>Escanea para seguirnos</p>
+                    </div>
+                </div>
+
+                <div class="admin-access">
+                    <a href="dashboard.php" class="btn-admin">Acceso Administrativo</a>
+                </div>
+
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DSH Consultores. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

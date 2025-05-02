@@ -18,7 +18,7 @@
             <p class="lead">En DSH Consultores combinamos expertise jurídico con un enfoque estratégico para proteger y hacer crecer su empresa</p>
             <div class="cta-buttons">
                 <a href="/contacto" class="btn btn-primary">Consulta Gratuita</a>
-                <a href="/servicios" class="btn btn-secondary">Nuestros Servicios</a>
+                <a href="/servicios.html" class="btn btn-secondary">Nuestros Servicios</a>
             </div>
         </div>
     </header>
@@ -29,16 +29,26 @@
             <h2>Confían en Nuestra <span class="text-highlight">Experiencia</span></h2>
             <div class="swiper-container">
                 <div class="swiper-wrapper" id="testimonios-container">
-                    <!-- Los testimonios se cargarán dinámicamente desde la API -->
+                    <!-- Slide de ejemplo 1 -->
                     <div class="swiper-slide">
                         <blockquote>
                             "DSH Consultores resolvió nuestro conflicto societario en tiempo récord, salvando nuestra empresa."
                         </blockquote>
                         <cite>- Grupo Industrial Monterrey</cite>
                     </div>
+                    <!-- Slide de ejemplo 2 -->
+                    <div class="swiper-slide">
+                        <blockquote>
+                            "La asesoría en compliance nos ayudó a evitar multas millonarias y mejorar nuestros procesos internos."
+                        </blockquote>
+                        <cite>- Empresa Financiera Nacional</cite>
+                    </div>
                 </div>
-                <!-- carrusel -->
+                <!-- Paginación -->
                 <div class="swiper-pagination"></div>
+                <!-- Flechas de navegación -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </section>
@@ -121,4 +131,8 @@
     <!-- Enlace al CRUD de admin (oculto para usuarios normales) -->
     <a href="/admin/login" class="admin-link">Área Admin</a>
 </body>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="js/main.js"></script>
 </html>

@@ -297,6 +297,8 @@ cite {
     z-index: 1000;
 }
 
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 {
@@ -321,4 +323,6 @@ cite {
         width: 100%;
         max-width: 300px;
     }
+
+    
 }

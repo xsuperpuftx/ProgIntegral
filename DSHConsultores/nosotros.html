@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros | DSH Consultores</title>
+    <meta name="description" content="Conoce nuestro equipo de abogados especializados y nuestra filosofía de trabajo">
+    
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Estilos específicos para la página nosotros */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin: 50px 0;
+        }
+        
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-photo {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-info h3 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .member-position {
+            color: var(--gray);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>Nuestra <span class="text-highlight">Firma Legal</span></h1>
+            <p class="lead">Más de 15 años brindando soluciones jurídicas innovadoras y efectivas</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="about-section">
+            <div class="about-content">
+                <h2>Nuestra <span class="text-highlight">Historia</span></h2>
+                <p>Fundada en 2008, DSH Consultores nació con la visión de ofrecer asesoría legal integral combinando profundidad técnica con un enfoque estratégico de negocios.</p>
+                <p>Lo que comenzó como un pequeño despacho especializado en derecho corporativo, hoy es una firma reconocida con presencia en tres estados de la república y más de 85 clientes satisfechos.</p>
+                <p>Nuestro crecimiento se basa en un principio fundamental: entender primero el negocio del cliente para luego ofrecer soluciones legales a medida.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipo DSH Consultores">
+            </div>
+        </div>
+        
+        <h2>Nuestros <span class="text-highlight">Valores</span></h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Integridad</h3>
+                <p>Actuamos siempre con ética y transparencia, manteniendo altos estándares profesionales</p>
+            </div>
+            <div class="value-card">
+                
+                <h3>Enfoque</h3>
+                <p>Nos especializamos en áreas clave donde podemos ofrecer máximo valor a nuestros clientes</p>
+            </div>
+            <div class="value-card">
+                
+                <h3>Compromiso</h3>
+                <p>Nos alineamos con los objetivos de nuestros clientes como si fueran nuestros</p>
+            </div>
+            <div class="value-card">
+                
+                <h3>Innovación</h3>
+                <p>Buscamos constantemente soluciones creativas a desafíos legales complejos</p>
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Listo para trabajar <span class="text-highlight">con nosotros</span>?</h2>
+            <div class="cta-buttons">
+                <a href="/contacto" class="btn btn-primary">Contactar Abogado</a>
+                <a href="/servicios" class="btn btn-secondary">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Cargar equipo desde API
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/api/equipo');
+                const equipo = await response.json();
+                const container = document.getElementById('team-container');
+                
+                equipo.forEach(miembro => {
+                    const card = document.createElement('div');
+                    card.className = 'team-member';
+                    card.innerHTML = `
+                        <div class="member-photo" style="background-image: url('${miembro.foto || 'https://i.pravatar.cc/300'}');"></div>
+                        <div class="member-info">
+                            <h3>${miembro.nombre}</h3>
+                            <span class="member-position">${miembro.puesto}</span>
+                            <p>${miembro.especialidad}</p>
+                            ${miembro.linkedin ? `<a href="${miembro.linkedin}" target="_blank">LinkedIn</a>` : ''}
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error cargando equipo:', error);
+            }
+        });
+    </script>
+</body>
+</html>

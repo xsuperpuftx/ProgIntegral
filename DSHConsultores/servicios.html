@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Servicios | DSH Consultores</title>
+    <meta name="description" content="Servicios legales especializados en derecho corporativo, compliance y litigio estratégico">
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Estilos adicionales específicos para servicios */
+        .service-detail {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .service-detail h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .service-detail ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        
+        .service-detail li {
+            margin-bottom: 10px;
+        }
+        
+        .service-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mismo header que la página principal -->
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>Nuestros <span class="text-highlight">Servicios Legales</span></h1>
+            <p class="lead">Soluciones jurídicas integrales diseñadas para proteger y potenciar su empresa</p>
+        </div>
+    </header>
+
+    <!-- Sección de categorías de servicios -->
+    <section class="featured-services">
+        <div class="container">
+            <div class="service-categories">
+                <div class="service-card" onclick="scrollToService('corporativo')">
+                    <h3>Derecho Corporativo</h3>
+                    <p>Constitución, operación y transformación de empresas</p>
+                </div>
+                
+                <div class="service-card" onclick="scrollToService('compliance')">
+                    
+                    <h3>Compliance Legal</h3>
+                    <p>Programas de integridad corporativa</p>
+                </div>
+                
+                <div class="service-card" onclick="scrollToService('litigio')">
+                   
+                    <h3>Litigio Estratégico</h3>
+                    <p>Representación en procesos judiciales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detalle de servicios -->
+    <section class="container">
+        <div class="service-detail" id="corporativo">
+            <h3>Derecho Corporativo</h3>
+            <p>Asesoría especializada en todas las etapas de la vida corporativa de su empresa:</p>
+            <ul>
+                <li>Constitución de sociedades mercantiles</li>
+                <li>Fusiones y adquisiciones (M&A)</li>
+                <li>Reestructuraciones corporativas</li>
+                <li>Gobierno corporativo y asambleas</li>
+                <li>Contratos societarios y comerciales</li>
+                <li>Due diligence legal</li>
+            </ul>
+            <a href="/contacto" class="btn btn-primary">Solicitar asesoría</a>
+        </div>
+        
+        <div class="service-detail" id="compliance">
+            <h3>Compliance Legal</h3>
+            <p>Programas de cumplimiento normativo adaptados a su industria y riesgo:</p>
+            <ul>
+                <li>Diagnóstico de cumplimiento normativo</li>
+                <li>Elaboración de códigos de ética</li>
+                <li>Políticas y procedimientos anticorrupción</li>
+                <li>Capacitación a equipos directivos</li>
+                <li>Representación ante autoridades</li>
+                <li>Auditorías legales preventivas</li>
+            </ul>
+            <a href="/contacto" class="btn btn-primary">Evaluar mi compliance</a>
+        </div>
+        
+        <div class="service-detail" id="litigio">
+            <h3>Litigio Estratégico</h3>
+            <p>Representación legal en procesos judiciales y alternativos:</p>
+            <ul>
+                <li>Litigio civil y mercantil</li>
+                <li>Contencioso administrativo</li>
+                <li>Arbitrajes nacionales e internacionales</li>
+                <li>Mediación y solución alternativa de controversias</li>
+                <li>Amparos y defensa constitucional</li>
+                <li>Recuperación de cartera</li>
+            </ul>
+            <a href="/contacto" class="btn btn-primary">Proteger mis intereses</a>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>¿Necesita <span class="text-highlight">asesoría especializada</span>?</h2>
+            <p>Nuestros abogados están listos para analizar su caso y proponer la mejor solución</p>
+            <div class="cta-buttons">
+                <a href="/contacto" class="btn btn-primary">Contactar Abogado</a>
+                <a href="tel:+526561234567" class="btn btn-secondary">Llamar Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Función para scroll a sección específica
+        function scrollToService(id) {
+            document.getElementById(id).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
