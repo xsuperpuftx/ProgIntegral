@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$dbname = 'dsh_consultores';
-$username = 'root';
-$password = '';
+$host = 'fdb1030.awardspace.net';
+$dbname = '4550941_aeromexico';
+$username = '4550941_aeromexico';
+$password = 'ProperDose1024!';
 
 try {
     $connection = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);

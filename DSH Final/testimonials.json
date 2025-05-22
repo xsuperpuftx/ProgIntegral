@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "text": "Excelente servicio profesional. Resolvieron mi caso de manera rápida y eficiente.",
+        "author": "Juan Pérez",
+        "company": "Empresa ABC"
+    },
+    {
+        "id": 2,
+        "text": "Muy satisfecho con el asesoramiento recibido. Los recomiendo totalmente por su profesionalismo y atención personalizada.",
+        "author": "María González",
+        "company": "Consultora XYZ"
+    },
+    {
+        "id": 3,
+        "text": "El equipo demostró gran conocimiento y nos ayudó a resolver un problema complejo que teníamos desde hacía meses.",
+        "author": "Carlos Rodríguez",
+        "company": "Rodríguez & Asociados"
+    },
+    {
+        "id": 4,
+        "text": "Como pequeña empresa, encontré exactamente el apoyo que necesitaba a un precio accesible. ¡Gracias por su excelente trabajo!",
+        "author": "Laura Martínez",
+        "company": "Tienda Online"
+    },
+    {
+        "id": 5,
+        "text": "Solución rápida y efectiva. No solo resolvieron mi problema inmediato sino que me dieron recomendaciones para evitar futuros inconvenientes.",
+        "author": "Roberto Sánchez",
+        "company": "Restaurante La Casona"
+    }
+]

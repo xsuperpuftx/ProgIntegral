@@ -2,8 +2,22 @@
 <html lang="es">
 
 <head>
+        
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7MMWCZQB6R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7MMWCZQB6R');
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <title>DSH Consultores - Asesoría Legal Especializada</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="estilo.css">
@@ -34,7 +48,7 @@
     <!-- Banner -->
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1>Expertos en Asesoría Legal y Cumplimiento Normativo</h1>
+            <h1>DSH Consultores</h1>
             <p>Protegiendo sus intereses con soluciones legales efectivas y personalizadas</p>
             <a href="#contacto" class="btn">Contáctenos</a>
         </div>
@@ -90,18 +104,25 @@
     </section>
 
     <!-- Testimonios -->
-    <section id="testimonios" class="testimonials">
-        <div class="container">
-            <h2>Testimonios de Clientes</h2>
-            <div class="testimonials-carousel">
-                <div class="testimonial" id="testimonial-1">
-                    <p class="testimonial-text">"Excelente servicio profesional. Resolvieron mi caso de manera rápida y
-                        eficiente."</p>
-                    <p class="testimonial-author">- Juan Pérez</p>
-                </div>
+   <section id="testimonios" class="testimonials">
+    <div class="container">
+        <h2>Testimonios de Clientes</h2>
+        <div class="testimonials-carousel">
+            <button class="carousel-button prev" aria-label="Anterior testimonio">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="testimonial-wrapper">
+                <!-- Los testimonios se insertarán aquí dinámicamente -->
             </div>
+            <button class="carousel-button next" aria-label="Siguiente testimonio">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
-    </section>
+        <div class="carousel-dots">
+            <!-- Los puntos de navegación se insertarán aquí dinámicamente -->
+        </div>
+    </div>
+</section>
 
     <!-- Contacto -->
     <section id="contacto" class="contact">
@@ -152,7 +173,7 @@
             </div>
 
             <div class="footer-links">
-                <h4>Enlaces Rápidos</h4>
+                <h4>Sitemap</h4>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#nosotros">Nosotros</a></li>
@@ -165,11 +186,11 @@
             <div class="footer-social">
                 <h4>Desarrollo</h4>
                 <div class="qr-code">
-                    <img src="imagenes/qr-code-github.png" alt="QR Instagram">
+                    <img src="imagenes/qr-code-github.png" alt="QR Sitio">
                     <p>Github</p>
                 </div>
                 <div class="qr-code">
-                    <img src="imagenes/qr-code-github.png" alt="QR WhatsApp">
+                    <img src="imagenes/qr-code-sitio.png" alt="QR Github">
                     <p>Link al sitio</p>
                 </div>
             </div>
@@ -181,8 +202,19 @@
             </div>
 
             <div class="admin-access">
-                <a href="cases.php" class="btn-admin">Acceso Administrativo</a>
-            </div>
+    <a href="cases.php" class="btn-admin">Acceso Administrativo</a>
+    <div class="color-palette">
+        <h4>Paleta de Colores</h4>
+        <ul class="color-list">
+            <li class="color-item" style="--color: #1a3e72;" data-color="var(--primary-color)">#1a3e72</li>
+            <li class="color-item" style="--color: #f8f9fa;" data-color="var(--secondary-color)">#f8f9fa</li>
+            <li class="color-item" style="--color: #e63946;" data-color="var(--accent-color)">#e63946</li>
+            <li class="color-item" style="--color: #333;" data-color="var(--text-color)">#333</li>
+            <li class="color-item" style="--color: #f8f9fa;" data-color="var(--light-text)">#f8f9fa</li>
+            <li class="color-item" style="--color: #212529;" data-color="var(--dark-text)">#212529</li>
+        </ul>
+    </div>
+</div>
         </div>
 
         <div class="footer-bottom">

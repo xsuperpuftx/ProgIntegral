@@ -1,200 +1,231 @@
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    /// menu de hamburguesa
     // Selectores
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links li');
+    const navItems = document.querySelectorAll('.nav-links li a');
 
-    // Función para alternar el menu
     function toggleMenu() {
-        // Alternar clase active en navLinks
         navLinks.classList.toggle('active');
-        
-        // Animacion para los items del menu
-        navItems.forEach((item, index) => {
-            if (item.style.animation) {
-                item.style.animation = '';
-            } else {
-                item.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
-        });
-        
-        // Animacion para el boton hamburguesa
         burger.classList.toggle('toggle');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     }
 
- 
     burger.addEventListener('click', toggleMenu);
 
     navItems.forEach(item => {
         item.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                toggleMenu();
+            if (navLinks.classList.contains('active')) toggleMenu();
+            if (item.getAttribute('href').startsWith('#')) {
+                document.querySelector(item.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
+
+    const carouselContainer = document.querySelector('.testimonials-carousel');
     
-    // Carrusel de testimonios 
-    const testimonialsContainer = document.querySelector('.testimonials-carousel');
+    if (carouselContainer) {
+        let testimonials = [];
+        let currentIndex = 0;
+        let carouselInterval;
 
-    // cargar testimonios desde API
-    async function loadTestimonials() {
-        try {
-
-            const testimonials = [{
-                    id: 1,
-                    text: "Excelente servicio profesional. Resolvieron mi caso de manera rápida y eficiente.",
-                    author: "Juan Pérez"
-                },
-                {
-                    id: 2,
-                    text: "Muy satisfecho con el asesoramiento recibido. Los recomiendo totalmente.",
-                    author: "María González"
-                },
-                {
-                    id: 3,
-                    text: "El equipo de DSH Consultores demostró gran conocimiento y profesionalismo.",
-                    author: "Carlos Rodríguez"
-                }
-            ];
-
-            displayTestimonials(testimonials);
-            startTestimonialRotation(testimonials);
-
-        } catch (error) {
-            console.error('Error al cargar testimonios:', error);
-            testimonialsContainer.innerHTML = `
-                <div class="testimonial">
-                    <p class="testimonial-text">"Los testimonios no están disponibles en este momento."</p>
-                </div>
-            `;
+        // Cargar testimonios desde JSON
+        async function loadTestimonials() {
+            try {
+                const response = await fetch('testimonios.json');
+                if (!response.ok) throw new Error('Error al cargar testimonios');
+                
+                testimonials = await response.json();
+                initCarousel();
+            } catch (error) {
+                console.error('Error:', error);
+                // Datos de respaldo
+                testimonials = [
+                    {
+                        "id": 1,
+                        "text": "Excelente servicio profesional. Resolvieron mi caso de manera rápida y eficiente.",
+                        "author": "Juan Pérez"
+                    },
+                    {
+                        "id": 2,
+                        "text": "Muy satisfecho con el asesoramiento recibido. Los recomiendo totalmente.",
+                        "author": "María González"
+                    },
+                    {
+                        id: 3,
+                        text: "El equipo de DSH Consultores demostró gran conocimiento y profesionalismo.",
+                        author: "Carlos Rodríguez"
+                    }
+                ];
+                initCarousel();
+            }
         }
+
+        // Inicializar carrusel 
+        function initCarousel() {
+            renderTestimonials();
+            renderIndicators();
+            startCarousel();
+            
+            document.querySelector('.prev')?.addEventListener('click', () => navigate('prev'));
+            document.querySelector('.next')?.addEventListener('click', () => navigate('next'));
+            
+            carouselContainer.addEventListener('mouseenter', pauseCarousel);
+            carouselContainer.addEventListener('mouseleave', startCarousel);
+        }
+
+        function renderTestimonials() {
+            const testimonialsHTML = testimonials.map((testimonial, index) => `
+                <div class="testimonial ${index === 0 ? 'active' : ''}">
+                    <p class="testimonial-text">"${testimonial.text}"</p>
+                    <p class="testimonial-author">- ${testimonial.author}</p>
+                </div>
+            `).join('');
+            
+            carouselContainer.insertAdjacentHTML('afterbegin', testimonialsHTML);
+        }
+
+        function renderIndicators() {
+            const indicatorsContainer = document.createElement('div');
+            indicatorsContainer.className = 'carousel-indicators';
+            
+            testimonials.forEach((_, index) => {
+                const indicator = document.createElement('span');
+                if (index === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToTestimonial(index));
+                indicatorsContainer.appendChild(indicator);
+            });
+            
+            carouselContainer.appendChild(indicatorsContainer);
+        }
+
+        // funcionalidad de flechitas
+        function navigate(direction) {
+            resetInterval();
+            currentIndex = direction === 'next' 
+                ? (currentIndex + 1) % testimonials.length 
+                : (currentIndex - 1 + testimonials.length) % testimonials.length;
+            updateActiveTestimonial();
+        }
+
+        function goToTestimonial(index) {
+            resetInterval();
+            currentIndex = index;
+            updateActiveTestimonial();
+        }
+
+        function updateActiveTestimonial() {
+            document.querySelectorAll('.testimonial').forEach((item, index) => {
+                item.classList.remove('active');
+                if (index === currentIndex) {
+                    setTimeout(() => item.classList.add('active'), 10);
+                }
+            });
+
+            document.querySelectorAll('.carousel-indicators span').forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // intervalo de testimonios
+        function startCarousel() {
+            carouselInterval = setInterval(() => navigate('next'), 8000);
+        }
+
+        function pauseCarousel() {
+            clearInterval(carouselInterval);
+        }
+
+        function resetInterval() {
+            pauseCarousel();
+            startCarousel();
+        }
+
+        // Iniciar carga
+        loadTestimonials();
     }
 
-    // Mostrar testimonios en el carrusel
-    function displayTestimonials(testimonials) {
-        testimonialsContainer.innerHTML = '';
-
-        testimonials.forEach(testimonial => {
-            const testimonialElement = document.createElement('div');
-            testimonialElement.className = 'testimonial';
-            testimonialElement.id = `testimonial-${testimonial.id}`;
-            testimonialElement.innerHTML = `
-                <p class="testimonial-text">"${testimonial.text}"</p>
-                <p class="testimonial-author">- ${testimonial.author}</p>
-            `;
-
-            testimonialsContainer.appendChild(testimonialElement);
+    //validacion del telefono
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            const errorElement = this.nextElementSibling;
+            if (errorElement && errorElement.classList.contains('error-message')) {
+                errorElement.style.display = (this.value.length >= 10 && this.value.length <= 15) ? 'none' : 'block';
+            }
         });
     }
 
-    // Rotacion de testimonios
-    function startTestimonialRotation(testimonials) {
-        let currentIndex = 0;
-
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % testimonials.length;
-            const nextTestimonial = testimonials[currentIndex];
-
-            testimonialsContainer.innerHTML = `
-                <div class="testimonial">
-                    <p class="testimonial-text">"${nextTestimonial.text}"</p>
-                    <p class="testimonial-author">- ${nextTestimonial.author}</p>
-                </div>
-            `;
-        }, 5000); // Cambia cada 5 segundos
-    }
-
-    // formulario de contacto
+    // validacion del formaulrio
     const contactForm = document.getElementById('contact-form');
-
     if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value.trim()
+            };
 
-            // validacion basica
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value.trim();
-
-            if (!name || !email || !phone || service === '' || !message) {
-                alert('Por favor complete todos los campos del formulario.');
-                return;
-            }
-
-            // validacion de email simple
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            // Validaciones
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
                 alert('Por favor ingrese un correo electrónico válido.');
                 return;
             }
 
-            // Enviar el formulario con fetch
-            const formData = new FormData(contactForm);
+            if (!/^[0-9]{10,15}$/.test(formData.phone)) {
+                alert('El teléfono debe contener entre 10 y 15 dígitos.');
+                return;
+            }
 
-            fetch('submit.php', {
+            // Envío real (descomenta para producción)
+            /*
+            try {
+                const response = await fetch('submit_form.php', {
                     method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error en la red');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    alert('Gracias por su mensaje. Nos pondremos en contacto pronto.');
-                    contactForm.reset();
-                    window.location.href = 'index.html?success=1#contacto';
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un error al enviar el formulario. Por favor intente nuevamente.');
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
                 });
+                
+                if (!response.ok) throw new Error('Error en el envío');
+                alert('¡Mensaje enviado con éxito!');
+                this.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al enviar el mensaje. Por favor intente nuevamente.');
+            }
+            */
+            
+            // Simulación de envío (solo para desarrollo)
+            console.log('Datos del formulario:', formData);
+            alert('¡Mensaje enviado con éxito! (Simulación)');
+            this.reset();
         });
     }
 
-    // Cargar los testimonios al iniciar
-    loadTestimonials();
-
-    // Efecto de scroll para las secciones
-    window.addEventListener('scroll', function () {
+    // =============================================
+    // 4. Efectos Adicionales
+    // =============================================
+    // Header con sombra al hacer scroll
+    window.addEventListener('scroll', function() {
         const header = document.querySelector('.header');
-        if (window.scrollY > 100) {
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
-        } else {
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        if (header) {
+            header.style.boxShadow = window.scrollY > 50 ? '0 2px 10px rgba(0,0,0,0.1)' : 'none';
         }
     });
 
-   // Manejo del formulario de login administrativo
-    document.getElementById('admin-login-form')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(this);
-        const username = formData.get('username');
-        const password = formData.get('password');
-        
-        fetch('php/login.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.href = 'dashboard.php';
-            } else {
-                alert('Acceso denegado. Verifique sus credenciales.');
+    // Smooth scrolling para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error al conectar con el servidor');
         });
     });
 });
